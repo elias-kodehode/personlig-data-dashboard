@@ -17,6 +17,57 @@ body{
 }
 
 
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.game-card{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: var(--card-color);
+    gap: 8px;
+    border-radius: 20px;
+}
+
+.game-card-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-card-buttons{
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.game-card-buttons button{
+    flex-grow: 1;
+    border: none;
+    border-radius: 20px;
+    width: auto;
+    padding: 5px;
+    width: clamp(4ch,6ch, 8ch);
+}
+
+.game-card-buttons button:hover{
+    scale: 1.1;
+}
+.game-card-buttons button:active{
+    scale: 0.9;
+}
+.game-card #rating{
+    color:beige;
+    font-size: .9rem;
+}
+.game-card #review{
+    /* border: 1px solid black; */
+    padding: 5px;
+    background-color: gray;
+    border-radius: 5px;
+}
+
 #createModal{
     background-color: var(--card-color);
     padding: 10px 20px;

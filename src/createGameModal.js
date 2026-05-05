@@ -6,6 +6,8 @@ const closeBtn = document.getElementById("closeBtn");
 
 const gameNameInput = document.getElementById("game-name");
 const gameReviewInput = document.getElementById("game-review");
+const gamePlaytimeInput = document.getElementById("game-playtime");
+const gameRatingInput = document.getElementById("game-rating");
 
 
 let currentId;
@@ -25,6 +27,8 @@ closeBtn.addEventListener("click", e => {
 function resetInputFields(){
     gameNameInput.value = "";
     gameReviewInput.value = "";
+    gameRatingInput.value = "";
+    gamePlaytimeInput.value = "";
 }
 
 saveBtn.addEventListener("click", e => {
@@ -33,13 +37,15 @@ saveBtn.addEventListener("click", e => {
 
 export function save(){
 
-    if(gameNameInput.value === "" || gameReviewInput === ""){
+    if(gameNameInput.value === "" || gameReviewInput.value === "" || gamePlaytimeInput.value === "" || gameRatingInput.value === ""){
         console.error("All fields are required");
         return;
     }
     localStorage.setItem(currentId, JSON.stringify({
         name: gameNameInput.value,
-        review: gameReviewInput.value
+        review: gameReviewInput.value,
+        playtime: gamePlaytimeInput.value,
+        rating: gameRatingInput.value
     }));
     modal.close();
 
