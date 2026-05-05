@@ -17,6 +17,66 @@ body{
 }
 
 
+#createModal{
+    background-color: var(--card-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    left: 50%;
+    top:50%;
+    translate: -50% -50%;
+    color: white;
+    min-width: 300px;
+}
+
+#createModal .container h2{
+    text-align: center;
+}
+
+#createModal button{
+    border-radius: 20px;
+    width: fit-content;
+    padding: 10px 20px;
+    align-self: flex-end;
+    border: none;
+}
+
+#createModal button:hover{
+    scale: 1.1;
+}
+
+
+#createModal .container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+    
+}
+
+
+.modal-field{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.modal-field input, .modal-field textarea{
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: var(--card-color);
+    color: white;
+}
+
+.modal-field input:focus, .modal-field textarea:focus{
+    outline: 2px solid black;
+}
+#createModal .container textarea{
+    min-height: 15lh;
+}
+
 /* Standard Breakpoints */
 /* Mobile First Approach */
 @media (min-width: 320px)  { /* Mobile Small */ }

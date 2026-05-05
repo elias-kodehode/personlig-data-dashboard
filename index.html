@@ -1,13 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="./src/app.js"></script>
-    <link rel="stylesheet" href="./styles/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="./src/app.js"></script>
+    <link rel="stylesheet" href="./styles/style.css" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <header>
+      <button id="openBtn">Create Review</button>
+    </header>
+
+    <p>hi</p>
+
+    <dialog id="createModal">
+      <div class="container">
+        <h2>Create Review</h2>
+
+        <div class="modal-field">
+          <label for="game-name"> Game Name: </label>
+          <input id="game-name" />
+        </div>
+
+        <div class="modal-field">
+          <label for="game-review"> Game Review: </label>
+          <textarea id="game-review"></textarea>
+        </div>
+
+        <span>
+          <button id="closeBtn">Close</button>
+          <button id="saveBtn">Save</button>
+        </span>
+      </div>
+    </dialog>
+  </body>
 </html>
