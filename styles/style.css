@@ -1,6 +1,6 @@
 :root{
-    --bg-color: hsl(0, 0%, 0%);
-    --card-color: hsl(from var(--bg-color) h calc(s + 0) calc(l + 20));
+    --bg-color: hsl(0, 0%, 20%);
+    --card-color: hsl(from var(--bg-color) h calc(s + 0) calc(l - 10));
 
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     color: white;
@@ -14,12 +14,17 @@
 
 body{
     background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
 }
 
 
 .grid{
     display: grid;
+    flex:1;
     grid-template-columns: repeat(3, 1fr);
+    margin: 20px;
+    gap: 8px;
 }
 
 .game-card{
@@ -29,6 +34,7 @@ body{
     background-color: var(--card-color);
     gap: 8px;
     border-radius: 20px;
+    border: 1px solid black;
 }
 
 .game-card-header{
@@ -48,25 +54,37 @@ body{
     border-radius: 20px;
     width: auto;
     padding: 5px;
-    width: clamp(4ch,6ch, 8ch);
+    /* width: clamp(4ch,6ch, 8ch); */
+
 }
 
 .game-card-buttons button:hover{
-    scale: 1.1;
+    scale: .95;
 }
 .game-card-buttons button:active{
     scale: 0.9;
 }
-.game-card #rating{
+.game-rating {
     color:beige;
     font-size: .9rem;
 }
-.game-card #review{
+
+.game-card-body{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+}
+
+.game-review {
+    flex:1;
     /* border: 1px solid black; */
     padding: 5px;
     background-color: gray;
     border-radius: 5px;
+    text-wrap: balance;
 }
+
+
 
 #createModal{
     background-color: var(--card-color);

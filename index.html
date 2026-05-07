@@ -14,6 +14,7 @@
       <label
         >Order by
         <select id="order-by">
+          <option value="default">Default</option>
           <option value="playtime-high">Playtime ▲</option>
           <option value="playtime-low">Playtime ▼</option>
           <option value="rating-high">Rating ▲</option>
@@ -23,55 +24,56 @@
     </header>
   </body>
 
-  <div class="grid">
+  <div class="grid"></div>
+
+  <template id="game-card-template">
     <div class="game-card">
       <div class="game-card-header">
-        <h3 id="title">Title</h3>
-        <p id="rating">8/10</p>
+        <h3 data-title class="game-title">Title</h3>
+        <p data-rating class="game-rating">8/10</p>
       </div>
 
       <div class="game-card-body">
-        <p id="review">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur
-          nihil eaque aliquam facere architecto aut adipisci beatae id maxime.
-          Et?
-        </p>
-
-        <p id="playtime">20 hours</p>
+        <div data-review class="game-review">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Consequuntur nihil eaque aliquam facere architecto aut adipisci
+            beatae id maxime. Et?
+          </p>
+        </div>
+        <div data-playtime class="game-playtime">
+          <p>20 hours</p>
+        </div>
       </div>
+
       <div class="game-card-buttons">
-        <button>Edit</button>
-        <button>Delete</button>
+        <button class="edit-review-btn">Edit</button>
+        <button class="delete-review-btn">Delete</button>
       </div>
     </div>
-  </div>
-
-  <game-review-widget></game-review-widget>
-
+  </template>
   <dialog id="createModal">
     <div class="container">
       <h2>Create Review</h2>
 
       <div class="modal-field">
-        <label for="game-name"> Game Name: </label>
-        <input id="game-name" />
+        <label for="game-title"> Game Title: </label>
+        <input id="game-title" />
       </div>
 
       <div class="modal-field">
         <label for="game-playtime"> Playtime(hrs): </label>
-        <input type="number" min="0" id="game-playtime"></input>
+        <input type="number" min="0" id="game-playtime" />
       </div>
 
       <div class="modal-field">
         <label for="game-rating"> Rating: </label>
-        <input type="number" min="0" max="10" id="game-rating"></input>
+        <input type="number" min="0" max="10" id="game-rating" />
       </div>
       <div class="modal-field">
         <label for="game-review"> Game Review: </label>
         <textarea id="game-review"></textarea>
       </div>
-
-
 
       <span>
         <button id="closeBtn">Close</button>
