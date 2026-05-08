@@ -12,6 +12,9 @@
     box-sizing: border-box;
 }
 
+header > * {
+    align-self: center;
+}
 body{
     background-color: var(--bg-color);
     display: flex;

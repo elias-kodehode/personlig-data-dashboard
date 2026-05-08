@@ -6,6 +6,9 @@ import * as db from "./dataAccess.js";
 //grid container
 const container = document.querySelector(".grid") ?? console.error("grid not found");
 
+
+const totalPlayTimeElement = document.querySelector("#total-playtime");
+
 //sorting element
 const sortByElement = document.querySelector("select");
 
@@ -45,10 +48,16 @@ export function renderUI(games){
     container.innerHTML = ``;
     reviewElements = [];
 
+    let totalPlaytime = 0;
     games.forEach(game => {
         const card = reviewCard.createReviewCard(game);
+        totalPlaytime += parseInt(game.playtime);
         reviewElements.push(card);
     });
+
+    //did this in previous forEach loop instead of in a reduce to avoid unnecessary iterations
+    //const totalPlaytime = games.reduce( (accumulator, game) => accumulator + parseInt(game.playtime), 0);
+    totalPlayTimeElement.textContent = "Total playtime: " + totalPlaytime +"hrs";
     renderReviews();
 }
 
