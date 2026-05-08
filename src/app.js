@@ -1,12 +1,12 @@
 import * as ui  from "./ui.js";
-
+import * as db from "./dataAccess.js";
 //default, playtime-high, playtime-low, rating-high, rating-low
 let currentSorting = "default";
 
 
 //remove review from localStorage and re-render
 document.addEventListener("onreviewdeleted", (e) => {
-    localStorage.removeItem(e.detail.id);
+    db.removeItemById(e.detail.id);
     render();
 });
 
@@ -32,24 +32,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function render(){
-
-    //get games from local storage and parse them from JSON -> object
-    let reviews = Object
-        .values(localStorage)
-        .map(x => JSON.parse(x));
-
-
-        //add dummy data if there is no reviews
-    if(reviews.length == 0){
+    //add dummy data if there is no reviews
+    if(db.size() == 0){
         for (const data of testData) {
-
-            const game  = { "id": crypto.randomUUID(), ...data};
-
-            localStorage.setItem(game.id,JSON.stringify(game));
+            db.addItem(data);
             document.dispatchEvent(new CustomEvent("onreviewcreated", {}));
         }
         location.reload();
     }
+
+    const reviews = db.getAllItems();
+
     //sort the games with the selected sorting
     sortGames(reviews);
 

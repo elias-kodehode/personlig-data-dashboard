@@ -1,4 +1,4 @@
-import * as modal from "./createReviewModal.js";
+import * as modal from "./editReviewModal.js";
 const container = document.querySelector(".grid") ?? console.error("grid not found");
 const template = document.querySelector("#review-card-template");
 

@@ -148,7 +148,7 @@ button:active{
 
 
 
-#createModal{
+.modal{
     position: relative;
     background-color: var(--card-color);
     padding: 10px 20px;
@@ -171,16 +171,15 @@ button:active{
      overflow: hidden;
 }
 
-
-#createModal::backdrop{
+.modal::backdrop{
     background-color: rgba(0, 0, 0, .8);
 }
 
-#createModal .container h2{
+.modal .container h2{
     text-align: center;
 }
 
-#createModal button{
+.modal button{
     border-radius: 20px;
     width: fit-content;
     padding: 10px 20px;
@@ -189,7 +188,7 @@ button:active{
 }
 
 
-#createModal .container{
+.modal .container{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -216,7 +215,7 @@ button:active{
 .modal-field input:focus, .modal-field textarea:focus{
     outline: 2px solid black;
 }
-#createModal .container textarea{
+.modal .container textarea{
     min-height: 15lh;
 }
 

@@ -1,20 +1,18 @@
-const modal = document.getElementById("createModal");
+import * as db from "./dataAccess.js";
+const modal = document.getElementById("create-modal");
 const openBtn = document.getElementById("openBtn");
-const saveBtn = document.getElementById("saveBtn");
-const closeBtn = document.getElementById("closeBtn");
+const saveBtn = document.getElementById("create-save-btn");
+const closeBtn = document.getElementById("create-close-btn");
 
 
-const gameTitleInput = document.getElementById("game-title");
-const gameReviewInput = document.getElementById("game-review");
-const gamePlaytimeInput = document.getElementById("game-playtime");
-const gameRatingInput = document.getElementById("game-rating");
+const gameTitleInput = document.querySelector("#create-modal [data-game-title]");//document.getElementById("game-title");
+const gameReviewInput =document.querySelector("#create-modal [data-game-review]"); //document.getElementById("game-review");
+const gamePlaytimeInput = document.querySelector("#create-modal [data-game-playtime]");//document.getElementById("game-playtime");
+const gameRatingInput = document.querySelector("#create-modal [data-game-rating]");//document.getElementById("game-rating");
 
-
-let currentId;
 
 openBtn.addEventListener("click", e => {
     modal.showModal();
-    currentId = crypto.randomUUID();
     resetInputFields();
 });
 
@@ -36,18 +34,6 @@ saveBtn.addEventListener("click", e => {
 });
 
 
-export function edit(id){
-    currentId = id;
-
-    const item = JSON.parse(localStorage.getItem(id));
-    gameTitleInput.value = item.title;
-    gameReviewInput.value = item.review;
-    gameRatingInput.value = item.rating;
-    gamePlaytimeInput.value = item.playtime;
-
-    modal.showModal();
-}
-
 
 export function save(){
 
@@ -55,15 +41,16 @@ export function save(){
         console.error("All fields are required");
         return;
     }
-    localStorage.setItem(currentId, JSON.stringify({
-        id: currentId,
+
+
+    db.addItem({
         title: gameTitleInput.value,
         review: gameReviewInput.value,
         playtime: gamePlaytimeInput.value,
         rating: gameRatingInput.value
-    }));
+    });
+    document.dispatchEvent(new CustomEvent("onreviewcreated", {}));
     modal.close();
 
-    document.dispatchEvent(new CustomEvent("onreviewcreated", {}));
 }
 
