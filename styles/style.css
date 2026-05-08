@@ -42,9 +42,9 @@ header label{
 .grid{
     display: grid;
     flex:1;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     margin: 20px;
-    gap: 8px;
+    gap: 16px;
 }
 
 .review-card{
@@ -53,7 +53,7 @@ header label{
     padding: 10px;
     background-color: var(--card-color);
     gap: 8px;
-    border-radius: 20px;
+    border-radius: 10px;
     corner-shape: squircle;
     box-shadow: 
     -1px -1px 1px  white,
@@ -67,6 +67,11 @@ header label{
     justify-content: space-between;
 }
 
+.review-card-header h3{
+    text-wrap: balance;
+    text-overflow: ellipsis;
+
+}
 .review-card-buttons{
     display: flex;
     justify-content: space-between;
@@ -96,14 +101,17 @@ button{
 
 button:hover{
     scale: .95;
+    background-color: var(--bg-color);
     box-shadow: 
         inset -1px -1px 1px  white,
         inset 1px 1px 1px white,
-        inset 5px 5px 5px black;
+        inset 5px 5px 5px  black;
 
 
         corner-shape: squircle scoop squircle squircle;
 }
+
+
 button:active{
     scale: 0.9;
 }
@@ -212,6 +220,15 @@ button:active{
     min-height: 15lh;
 }
 
+.delete-review-btn:hover, #saveBtn:hover{
+    corner-shape: scoop squircle squircle squircle;
+}
+
+#delete-all-btn, #openBtn{
+    corner-shape: squircle;
+}
+
+
 /* Standard Breakpoints */
 /* Mobile First Approach */
 @media (min-width: 320px)  { /* Mobile Small */ }
@@ -225,5 +242,17 @@ button:active{
 @media (max-width: 1439px) { /* Below XL */ }
 @media (max-width: 1199px) { /* Below Large */ }
 @media (max-width: 1023px) { /* Below Desktop */ }
-@media (max-width: 767px)  { /* Below Tablet */ }
+@media (max-width: 767px)  { 
+    .grid{
+        display: grid;
+        flex:1;
+        grid-template-columns: repeat(1, 1fr);
+        margin: 20px;
+        gap: 16px;
+    }
+
+    .review-card{
+        height: 100%;
+    }
+}
 @media (max-width: 479px)  { /* Below Mobile Large */ }
