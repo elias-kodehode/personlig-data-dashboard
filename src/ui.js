@@ -1,6 +1,7 @@
 import {} from "./createReviewModal.js";
 import * as utils from "./utils.js";
 import * as reviewCard from "./reviewCard.js";
+import * as db from "./dataAccess.js";
 
 //grid container
 const container = document.querySelector(".grid") ?? console.error("grid not found");
@@ -28,7 +29,8 @@ deleteAllBtn.addEventListener("click", () => {
     const promptResult = confirm("are you sure?");
 
     if(promptResult){
-        localStorage.clear();
+        db.removeAllItems();
+        //render empty UI
         renderUI([]);
     }
 });

@@ -5,10 +5,10 @@ const saveBtn = document.getElementById("create-save-btn");
 const closeBtn = document.getElementById("create-close-btn");
 
 
-const gameTitleInput = document.querySelector("#create-modal [data-game-title]");//document.getElementById("game-title");
-const gameReviewInput =document.querySelector("#create-modal [data-game-review]"); //document.getElementById("game-review");
-const gamePlaytimeInput = document.querySelector("#create-modal [data-game-playtime]");//document.getElementById("game-playtime");
-const gameRatingInput = document.querySelector("#create-modal [data-game-rating]");//document.getElementById("game-rating");
+const gameTitleInput = document.querySelector("#create-modal [data-game-title]");
+const gameReviewInput =document.querySelector("#create-modal [data-game-review]");
+const gamePlaytimeInput = document.querySelector("#create-modal [data-game-playtime]");
+const gameRatingInput = document.querySelector("#create-modal [data-game-rating]");
 
 
 openBtn.addEventListener("click", e => {
@@ -21,7 +21,7 @@ closeBtn.addEventListener("click", e => {
     modal.close();
 });
 
-
+//reset element fields to prevent having to instantiate new ones every time
 function resetInputFields(){
     gameTitleInput.value = "";
     gameReviewInput.value = "";

@@ -4,10 +4,10 @@ const saveBtn = document.getElementById("edit-save-btn");
 const closeBtn = document.getElementById("edit-close-btn");
 
 
-const gameTitleInput = document.querySelector("#edit-modal [data-game-title]");//document.getElementById("game-title");
-const gameReviewInput =document.querySelector("#edit-modal [data-game-review]"); //document.getElementById("game-review");
-const gamePlaytimeInput = document.querySelector("#edit-modal [data-game-playtime]");//document.getElementById("game-playtime");
-const gameRatingInput = document.querySelector("#edit-modal [data-game-rating]");//document.getElementById("game-rating");
+const gameTitleInput = document.querySelector("#edit-modal [data-game-title]");
+const gameReviewInput =document.querySelector("#edit-modal [data-game-review]");
+const gamePlaytimeInput = document.querySelector("#edit-modal [data-game-playtime]");
+const gameRatingInput = document.querySelector("#edit-modal [data-game-rating]");
 
 
 let currentItem = null;
@@ -18,6 +18,7 @@ closeBtn.addEventListener("click", e => {
 });
 
 
+//reset fields, to prevent having to instantiate the modal every time
 function resetInputFields(){
     gameTitleInput.value = "";
     gameReviewInput.value = "";
@@ -70,7 +71,7 @@ export function save(){
         playtime: gamePlaytimeInput.value,
         rating: gameRatingInput.value
     });
-    
+
     document.dispatchEvent(new CustomEvent("onreviewcreated", {}));
     modal.close();
 

@@ -1,7 +1,7 @@
 export function getItemById(id){
     const data = localStorage.getItem(id);
 
-    return JSON.parse(data);
+    return JSON.parse(data) ?? null;
 }
 
 export function addItem(data){
@@ -25,11 +25,12 @@ export function removeItemById(id){
     localStorage.removeItem(id);
 }
 
-export function removeAllItems(){
-
+//delete all reviews
+export function removeAllItems(){   
     localStorage.clear();
 }
 
+//get all reviews in storage
 export function getAllItems(){
     const items = Object
     .values(localStorage)
@@ -37,9 +38,11 @@ export function getAllItems(){
     return items;
 }
 
+//get amount of reviews in storage
 export function size (){
     return localStorage.length;
 }
+
 ///get the first review with the title
 export function getItemByTitle(title){
     const items = getAllItems();
