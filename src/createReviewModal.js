@@ -35,6 +35,20 @@ saveBtn.addEventListener("click", e => {
     save();
 });
 
+
+export function edit(id){
+    currentId = id;
+
+    const item = JSON.parse(localStorage.getItem(id));
+    gameTitleInput.value = item.title;
+    gameReviewInput.value = item.review;
+    gameRatingInput.value = item.rating;
+    gamePlaytimeInput.value = item.playtime;
+
+    modal.showModal();
+}
+
+
 export function save(){
 
     if(gameTitleInput.value === "" || gameReviewInput.value === "" || gamePlaytimeInput.value === "" || gameRatingInput.value === ""){
@@ -50,8 +64,6 @@ export function save(){
     }));
     modal.close();
 
-    document.dispatchEvent(new CustomEvent("onreviewcreated", {
-        
-    }));
+    document.dispatchEvent(new CustomEvent("onreviewcreated", {}));
 }
 

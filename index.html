@@ -9,11 +9,9 @@
   </head>
   <body>
     <header>
-      <button id="openBtn">Create Review</button>
-
       <label
-        >Order by
-        <select id="order-by">
+        >Sort by
+        <select id="sort-by">
           <option value="default">Default</option>
           <option value="playtime-high">Playtime ▲</option>
           <option value="playtime-low">Playtime ▼</option>
@@ -21,19 +19,22 @@
           <option value="rating-low">Rating ▼</option>
         </select>
       </label>
+      <button id="openBtn">Create Review</button>
+
+      <button id="delete-all-btn">Delete All</button>
     </header>
   </body>
 
   <div class="grid"></div>
 
-  <template id="game-card-template">
-    <div class="game-card">
-      <div class="game-card-header">
+  <template id="review-card-template">
+    <div class="review-card">
+      <div class="review-card-header">
         <h3 data-title class="game-title">Title</h3>
         <p data-rating class="game-rating">8/10</p>
       </div>
 
-      <div class="game-card-body">
+      <div class="review-card-body">
         <div data-review class="game-review">
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -46,7 +47,7 @@
         </div>
       </div>
 
-      <div class="game-card-buttons">
+      <div class="review-card-buttons">
         <button class="edit-review-btn">Edit</button>
         <button class="delete-review-btn">Delete</button>
       </div>

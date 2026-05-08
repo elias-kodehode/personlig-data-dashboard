@@ -19,6 +19,26 @@ body{
 }
 
 
+header{
+    display: flex;
+    flex-grow: 1;
+    gap: 8px;
+    margin: 5px;
+}
+
+header button{
+    border: none;
+    border-radius: 20px;
+    width: auto;
+    padding: 5px;
+    
+}
+
+
+header label{
+    flex:1;
+}
+
 .grid{
     display: grid;
     flex:1;
@@ -27,28 +47,33 @@ body{
     gap: 8px;
 }
 
-.game-card{
+.review-card{
     display: flex;
     flex-direction: column;
     padding: 10px;
     background-color: var(--card-color);
     gap: 8px;
     border-radius: 20px;
-    border: 1px solid black;
+    corner-shape: squircle;
+    box-shadow: 
+    -1px -1px 1px  white,
+    1px 1px 1px white,
+    5px 5px 5px black;
+    color: white;
 }
 
-.game-card-header{
+.review-card-header{
     display: flex;
     justify-content: space-between;
 }
 
-.game-card-buttons{
+.review-card-buttons{
     display: flex;
     justify-content: space-between;
     gap: 8px;
 }
 
-.game-card-buttons button{
+.review-card-buttons button{
     flex-grow: 1;
     border: none;
     border-radius: 20px;
@@ -58,10 +83,28 @@ body{
 
 }
 
-.game-card-buttons button:hover{
-    scale: .95;
+button{
+    background-color: transparent;
+    box-shadow: 
+        -1px -1px 1px  white,
+        1px 1px 1px white,
+        5px 5px 5px black;
+        color: white;
+        corner-shape: squircle;
+        transition: .1s all linear;
 }
-.game-card-buttons button:active{
+
+button:hover{
+    scale: .95;
+    box-shadow: 
+        inset -1px -1px 1px  white,
+        inset 1px 1px 1px white,
+        inset 5px 5px 5px black;
+
+
+        corner-shape: squircle scoop squircle squircle;
+}
+button:active{
     scale: 0.9;
 }
 .game-rating {
@@ -69,24 +112,36 @@ body{
     font-size: .9rem;
 }
 
-.game-card-body{
+.review-card-body{
     display: flex;
     flex-direction: column;
     flex:1;
+    
 }
 
 .game-review {
     flex:1;
     /* border: 1px solid black; */
     padding: 5px;
-    background-color: gray;
-    border-radius: 5px;
+    background-color: hsl(from var(--bg-color) h calc(s + 0) calc(l - 1));
+    border-radius: 10px;
+    corner-shape: squircle;
     text-wrap: balance;
+    box-shadow: 
+        inset -1px -1px 1px  white,
+        inset 1px 1px 1px white;
+
+    color: white;
+
+    max-height: 10lh;
+    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 
 
 #createModal{
+    position: relative;
     background-color: var(--card-color);
     padding: 10px 20px;
     border: none;
@@ -96,6 +151,21 @@ body{
     translate: -50% -50%;
     color: white;
     min-width: 300px;
+    
+    border-radius: 20px;
+    /* corner-top-right-shape: scoop; */
+
+    box-shadow: 
+    -1px -1px 1px  white,
+     1px 1px 1px white,
+     5px 5px 5px black;
+     z-index: 9;
+     overflow: hidden;
+}
+
+
+#createModal::backdrop{
+    background-color: rgba(0, 0, 0, .8);
 }
 
 #createModal .container h2{
@@ -108,10 +178,6 @@ body{
     padding: 10px 20px;
     align-self: flex-end;
     border: none;
-}
-
-#createModal button:hover{
-    scale: 1.1;
 }
 
 

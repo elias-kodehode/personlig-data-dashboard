@@ -1,39 +1,60 @@
-import {} from "./createGameModal.js";
+import {} from "./createReviewModal.js";
 import * as utils from "./utils.js";
 import * as reviewCard from "./reviewCard.js";
 
+//grid container
 const container = document.querySelector(".grid") ?? console.error("grid not found");
-const orderByElement = document.querySelector("select");
+
+//sorting element
+const sortByElement = document.querySelector("select");
+
+//delete all button
+const deleteAllBtn = document.querySelector("#delete-all-btn");
 
 
-orderByElement.addEventListener("change", (e) => {
+//tell the system that the sorting has changed
+sortByElement.addEventListener("change", (e) => {
     const selection = e.target.value;
 
-    document.dispatchEvent(new CustomEvent("onorderchanged", {
+    document.dispatchEvent(new CustomEvent("onsortchanged", {
         detail: {
-            order: selection
+            sorting: selection
         }
     }));
 });
 
-let gameCardElements = [];
+//handle deleting all reviews and re-rendering
+deleteAllBtn.addEventListener("click", () => {
+    const promptResult = confirm("are you sure?");
 
-export function populateUI(games){
+    if(promptResult){
+        localStorage.clear();
+        renderUI([]);
+    }
+});
+
+//review cards to be rendered
+let reviewElements = [];
+
+
+//renders all review cards in the array, very inefficient
+export function renderUI(games){
+    // Empty the container for re-rendering new reviews
     container.innerHTML = ``;
-    gameCardElements = [];
+    reviewElements = [];
 
     games.forEach(game => {
-        const card = reviewCard.createCard(game);
-        gameCardElements.push(card);
+        const card = reviewCard.createReviewCard(game);
+        reviewElements.push(card);
     });
-    renderCards();
-    // games.sort((a,b) => a.playtime - b.playtime);
+    renderReviews();
 }
 
 
 
-function renderCards(){
-    gameCardElements.forEach(x => {
+function renderReviews(){
+    reviewElements.forEach(x => {
+        //append review elements to the container to be rendered
         container.appendChild(x);
     });
 }
