@@ -50,6 +50,8 @@ function render(){
     ui.renderUI(reviews);
 }
 
+
+//handle sorting
 function sortGames(games){
     if(currentSorting === null || currentSorting === "default"){
         return;
@@ -68,6 +70,31 @@ function sortGames(games){
 
     if(currentSorting == "rating-low"){
         games.sort((a,b) => a.rating -b.rating);
+    }
+
+    if(currentSorting == "alphabetical"){
+        games.sort( (a,b) => {
+            if(a.title < b.title){
+                return -1;
+            }
+
+            if(a.title > b.title){
+                return 1;
+            }
+            return 0;
+        });
+    }
+    if(currentSorting == "alphabetical-reverse"){
+        games.sort( (a,b) => {
+            if(a.title < b.title ){
+                return -1;
+            }
+
+            if(a.title > b.title){
+                return 1;
+            }
+            return 0;
+        }).reverse();
     }
 }
 
