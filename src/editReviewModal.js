@@ -52,6 +52,17 @@ export function save(){
     }
 
 
+    if(gameRatingInput.value > 10){
+        console.error("rating cannot be greater than 10")
+        return;
+    }
+
+    if(gamePlaytimeInput.value <= 0){
+        console.error("playtime must be greater than 0")
+        return;
+    }
+
+
     db.addItem({
         id: currentItem.id,
         title: gameTitleInput.value,
@@ -59,6 +70,7 @@ export function save(){
         playtime: gamePlaytimeInput.value,
         rating: gameRatingInput.value
     });
+    
     document.dispatchEvent(new CustomEvent("onreviewcreated", {}));
     modal.close();
 

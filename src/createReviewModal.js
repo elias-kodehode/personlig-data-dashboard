@@ -42,6 +42,15 @@ export function save(){
         return;
     }
 
+    if(gameRatingInput.value > 10){
+        console.error("rating cannot be greater than 10")
+        return;
+    }
+
+    if(gamePlaytimeInput.value <= 0){
+        console.error("playtime must be greater than 0")
+        return;
+    }
 
     db.addItem({
         title: gameTitleInput.value,
