@@ -1,3 +1,5 @@
+Github pages: https://elias-kodehode.github.io/personlig-data-dashboard/
+
 trykk på "Create Review" for å skrive et spill review.
 alle feltene er obligatoriske, og har basic "validering"
 
