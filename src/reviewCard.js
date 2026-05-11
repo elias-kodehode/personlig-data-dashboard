@@ -1,4 +1,4 @@
-import * as modal from "./editReviewModal.js";
+import * as modal from "./reviewModal.js";
 const container = document.querySelector(".grid") ?? console.error("grid not found");
 const template = document.querySelector("#review-card-template");
 
@@ -48,7 +48,8 @@ export function createReviewCard(card){
 
     //edit button for each individual card
     content.editButton.addEventListener("click", () => {
-        modal.edit(content.id);
+        // modal.edit(content.id);
+        modal.openReviewModal({modalMode: "edit", item: card});
     });
 
     return clone;

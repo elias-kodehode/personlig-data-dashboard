@@ -1,11 +1,11 @@
-import {} from "./createReviewModal.js";
-import * as utils from "./utils.js";
 import * as reviewCard from "./reviewCard.js";
 import * as db from "./dataAccess.js";
+import * as reviewModal from "./reviewModal.js";
 
 //grid container
 const container = document.querySelector(".grid") ?? console.error("grid not found");
 
+const createReviewBtn = document.querySelector("#create-review-btn");
 
 const totalPlayTimeElement = document.querySelector("#total-playtime");
 
@@ -15,6 +15,10 @@ const sortByElement = document.querySelector("select");
 //delete all button
 const deleteAllBtn = document.querySelector("#delete-all-btn");
 
+
+createReviewBtn.addEventListener("click",() => {
+    reviewModal.openReviewModal({modalMode: "create"});
+});
 
 //tell the system that the sorting has changed
 sortByElement.addEventListener("change", (e) => {
@@ -62,6 +66,10 @@ export function renderUI(games){
 }
 
 
+
+export function rerender(){
+    
+}
 
 function renderReviews(){
     reviewElements.forEach(x => {
