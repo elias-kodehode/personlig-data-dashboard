@@ -6,8 +6,8 @@ export function getItemById(id){
 
 
 export function addItems(items){
-    for (let index = 0; index < items.length; index++) {
-        addItem(items[index]);
+    for (let i = 0; i < items.length; i++) {
+        addItem(items[i]);
     }
 }
 
@@ -60,7 +60,7 @@ export function getItemByTitle(title){
 }
 
 ///get all reviews containing the query
-export function getItemsContaining(query){
+export function getItemsWithTitleContaining(query){
     const items = getAllItems();
     return items.filter(x => x.title.toLowerCase().includes(query.toLowerCase())) ?? [];
 }

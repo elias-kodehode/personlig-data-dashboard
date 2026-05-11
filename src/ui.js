@@ -47,15 +47,15 @@ let reviewElements = [];
 
 
 //renders all review cards in the array, very inefficient
-export function renderUI(games){
+export function renderUI(reviews){
     // Empty the container for re-rendering new reviews
     container.innerHTML = ``;
     reviewElements = [];
 
     let totalPlaytime = 0;
-    games.forEach(game => {
-        const card = reviewCard.createReviewCard(game);
-        totalPlaytime += parseInt(game.playtime);
+    reviews.forEach(r => {
+        const card = reviewCard.createReviewCard(r);
+        totalPlaytime += parseInt(r.playtime);
         reviewElements.push(card);
     });
 
