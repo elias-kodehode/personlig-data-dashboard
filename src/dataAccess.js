@@ -4,6 +4,13 @@ export function getItemById(id){
     return JSON.parse(data) ?? null;
 }
 
+
+export function addItems(items){
+    for (let index = 0; index < items.length; index++) {
+        addItem(items[index]);
+    }
+}
+
 //if data contains id, the entry will be modified with new data, but keep the id
 //if no id is present it adds a new entry, giving it an id
 export function addItem(data){
