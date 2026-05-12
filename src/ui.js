@@ -1,25 +1,9 @@
 import * as reviewCard from "./reviewCard.js";
-import * as reviewModal from "./reviewModal.js";
 
 //grid container
 const container = document.querySelector(".grid") ?? console.error("grid not found");
 
 const totalPlayTimeElement = document.querySelector("#total-playtime");
-
-document.querySelector("#create-review-btn").addEventListener("click",() => {
-    reviewModal.openReviewModal({modalMode: "create"});
-});
-
-//tell the system that the sorting has changed
-document.querySelector("select").addEventListener("change", (e) => {
-    const selection = e.target.value;
-
-    document.dispatchEvent(new CustomEvent("onsortchanged", {
-        detail: {
-            sorting: selection
-        }
-    }));
-});
 
 
 //review card elements to be rendered

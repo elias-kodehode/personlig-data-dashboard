@@ -4,12 +4,15 @@ import * as db from "./dataAccess.js";
 //default, playtime-high, playtime-low, rating-high, rating-low
 let currentSorting = "default";
 
+
+//rerender the UI
 export function rerender() {
     const reviews = db.getAllItems();
     reviews.sort(sorters[currentSorting]);
     ui.renderUI(reviews);
 }
 
+//set the sorting
 export function setSorting(value){
     currentSorting = value;
 }

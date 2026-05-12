@@ -11,6 +11,22 @@ document.addEventListener("onreviewdeleted", (e) => {
     rerender();
 });
 
+document.querySelector("#create-review-btn").addEventListener("click",() => {
+    reviewModal.openReviewModal({modalMode: "create"});
+});
+
+
+
+
+//tell the system that the sorting has changed
+document.querySelector("select").addEventListener("change", (e) => {
+    const sorting = e.target.value;
+    setSorting(sorting);
+    rerender();
+});
+
+
+//delete all entries and update the database
 document.querySelector("#delete-all-btn").addEventListener("click", () => {
     const promptResult = confirm("are you sure?");
 
@@ -30,13 +46,6 @@ document.addEventListener("onreviewmodified", e => {
     rerender();
 });
 
-
-//rerender when the sorting method has been changed
-document.addEventListener("onsortchanged", e => {
-    const sorting = e.detail.sorting;
-    setSorting(sorting);
-    rerender();
-});
 
 
 //render the ui on initial load
