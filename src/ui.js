@@ -1,5 +1,4 @@
 import * as reviewCard from "./reviewCard.js";
-import * as db from "./dataAccess.js";
 import * as reviewModal from "./reviewModal.js";
 
 //grid container
@@ -22,18 +21,8 @@ document.querySelector("select").addEventListener("change", (e) => {
     }));
 });
 
-//handle deleting all reviews and re-rendering
-document.querySelector("#delete-all-btn").addEventListener("click", () => {
-    const promptResult = confirm("are you sure?");
 
-    if(promptResult){
-        db.removeAllItems();
-        //render empty UI
-        renderUI([]);
-    }
-});
-
-//review cards to be rendered
+//review card elements to be rendered
 let reviewElements = [];
 
 
@@ -57,10 +46,6 @@ export function renderUI(reviews){
 }
 
 
-
-export function rerender(){
-    
-}
 
 function renderReviews(){
     reviewElements.forEach(x => {

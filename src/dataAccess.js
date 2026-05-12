@@ -15,15 +15,20 @@ export function addItems(items){
 //if no id is present it adds a new entry, giving it an id
 export function addItem(data){
 
-    //if it already exists in storage, dont make a new id
+    //if there is no id then we assume this is a "create" operation
+    //otherwise assume "edit" and just update the entry in storage but keeping the same id
+    if(data.id === null || data.id === undefined){
+        data.id = crypto.randomUUID();
+    }
+
+    //if it doesnt have an id here something has gone very wrong
     if(data.id){
         localStorage.setItem(data.id,JSON.stringify(data));
         return;
     }
-
-    //give the review an id
-    const game  = { "id": crypto.randomUUID(), ...data};
-    localStorage.setItem(game.id,JSON.stringify(game));
+    else{
+        throw new Error("ITEM DOES NOT HAVE AN ID")
+    }
 }
 
 export function removeItem(item){

@@ -1,97 +1,49 @@
 import * as ui  from "./ui.js";
 import * as db from "./dataAccess.js";
 import { testData } from "./testData.js";
-//default, playtime-high, playtime-low, rating-high, rating-low
-let currentSorting = "default";
+import {rerender, setSorting} from "./state.js";
 
 
-//remove review from localStorage and re-render
+
+//remove review from localStorage and re-rerender
 document.addEventListener("onreviewdeleted", (e) => {
     db.removeItemById(e.detail.id);
-    render();
+    rerender();
+});
+
+document.querySelector("#delete-all-btn").addEventListener("click", () => {
+    const promptResult = confirm("are you sure?");
+
+    if(promptResult){
+        db.removeAllItems();
+        rerender();
+    }
 });
 
 
-//re-render ui elements when a new review has been created
-//NOTE: very inefficient as it re-renders every single element
-document.addEventListener("onreviewcreated", () => {
-    render();
+//this gets called when an item is created or edited, handle it accordingly
+document.addEventListener("onreviewmodified", e => {
+    const mode = e.detail.mode;
+    const data = e.detail.data;
+    //dataAccess.js handles creating and editing
+    db.addItem(data);
+    rerender();
 });
 
-//re-render when the sorting method has been changed
+
+//rerender when the sorting method has been changed
 document.addEventListener("onsortchanged", e => {
     const sorting = e.detail.sorting;
-    currentSorting = sorting;
-    render();
+    setSorting(sorting);
+    rerender();
 });
 
 
 //render the ui on initial load
 document.addEventListener("DOMContentLoaded", () => {
-    render();
-});
-
-
-function render(){
-    //add dummy data if there is no reviews
+    //fill with dummy data if there is no data
     if(db.size() == 0){
         db.addItems(testData);
-        // document.dispatchEvent(new CustomEvent("onreviewcreated", {}));  
     }
-
-    const reviews = db.getAllItems();
-
-    //sort the games with the selected sorting
-    sortGames(reviews);
-
-    //tell the ui to re-render elements
-    ui.renderUI(reviews);
-}
-
-
-//handle sorting
-function sortGames(games){
-    if(currentSorting === null || currentSorting === "default"){
-        return;
-    }
-    if(currentSorting == "playtime-high"){
-        games.sort((a,b) => a.playtime -b.playtime).reverse();
-    }
-    
-    if(currentSorting == "playtime-low"){
-        games.sort((a,b) => a.playtime -b.playtime);
-    }
-
-    if(currentSorting == "rating-high"){
-        games.sort((a,b) => a.rating -b.rating).reverse();
-    }
-
-    if(currentSorting == "rating-low"){
-        games.sort((a,b) => a.rating -b.rating);
-    }
-
-    if(currentSorting == "alphabetical"){
-        games.sort( (a,b) => {
-            if(a.title < b.title){
-                return -1;
-            }
-
-            if(a.title > b.title){
-                return 1;
-            }
-            return 0;
-        });
-    }
-    if(currentSorting == "alphabetical-reverse"){
-        games.sort( (a,b) => {
-            if(a.title < b.title ){
-                return -1;
-            }
-
-            if(a.title > b.title){
-                return 1;
-            }
-            return 0;
-        }).reverse();
-    }
-}
+    rerender();
+});

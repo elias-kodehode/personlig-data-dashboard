@@ -48,7 +48,6 @@ export function createReviewCard(card){
 
     //edit button for each individual card
     content.editButton.addEventListener("click", () => {
-        // modal.edit(content.id);
         modal.openReviewModal({modalMode: "edit", item: card});
     });
 

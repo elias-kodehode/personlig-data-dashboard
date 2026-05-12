@@ -1,5 +1,5 @@
 import * as db from "./dataAccess.js";
-import {rerender} from "./ui.js";
+import {rerender} from "./state.js";
 
 const form = document.querySelector("#review-form");
 
@@ -22,24 +22,20 @@ form.addEventListener("submit", (e) => {
         return;
     
     const data = {
+        id: mode == "edit" ? currentItem.id: null,
         title: titleElement.value,
-        review: titleElement.value,
+        review: reviewELement.value,
         playtime: playtimeElement.value,
-        rating: ratingElement.value
+        rating: ratingElement.value,
     };
 
-
-    if(mode === "create"){
-        db.addItem(data);
-    }
-
-    if(mode === "edit"){
-        db.addItem({
-            id: currentItem.id,
-            ...data
-        });
-    }
-    rerender();
+    //notify the system that an element has been modified
+    document.dispatchEvent( new CustomEvent("onreviewmodified", {
+        detail:{
+            mode: mode,
+            data: data
+        }
+    }));
     modal.close();
 });
 
