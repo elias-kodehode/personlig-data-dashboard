@@ -87,6 +87,7 @@ button{
     box-shadow:
     inset 1px 1px 5px black,
     inset -1px -1px 5px black;
+    transition:  all .2s linear;
 }
 
 .pill{
@@ -104,6 +105,12 @@ button{
     border-radius: 20px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+}
+
+.pill:hover button:not(:hover){
+    border-radius: 0;
+    transition:  .2s linear;
+    opacity: .9;
 }
 
 body{
@@ -181,28 +188,6 @@ body{
     background-color: rgba(0, 0, 0, .8);
 }
 
-/* button{
-    background-color: transparent;
-    box-shadow: 
-        -1px -1px 1px  white,
-        1px 1px 1px white,
-        5px 5px 5px black;
-        color: white;
-        corner-shape: squircle;
-        transition: .1s all linear;
-        border-radius: 20px;
-        padding: 10px 20px;
-} */
-
-/* button:hover{
-    scale: .95;
-    background-color: var(--bg-color);
-    box-shadow: 
-        inset -1px -1px 1px  white,
-        inset 1px 1px 1px white,
-        inset 5px 5px 5px  black;
-        corner-shape: squircle scoop squircle squircle;
-} */
 
 @media (max-width: 767px)  { 
     .grid{
