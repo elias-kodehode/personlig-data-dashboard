@@ -24,13 +24,16 @@ const sorters = {
     "rating-low": (a,b) => a.rating -b.rating,
     "playtime-high": (a,b) => b.playtime - a.playtime,
     "playtime-low": (a,b) => a.playtime - b.playtime,
-    "alphabetical": (a, b) => {
-        if (a.title < b.title) return -1;
-        if (a.title > b.title) return 1;
-        return 0;
-      },"alphabetical-reverse": (a, b) => {
-        if (a.title < b.title) return 1;
-        if (a.title > b.title) return -1;
-        return 0;
-      }
+    "alphabetical": (a,b) => a.title.localeCompare(b.title),
+    "alphabetical-reverse": (a,b) => b.title.localeCompare(a.title)
+    // "alphabetical": (a, b) => {
+    //     if (a.title < b.title) return -1;
+    //     if (a.title > b.title) return 1;
+    //     return 0;
+    //   },
+    //   "alphabetical-reverse": (a, b) => {
+    //     if (a.title < b.title) return 1;
+    //     if (a.title > b.title) return -1;
+    //     return 0;
+    //   }
 };
