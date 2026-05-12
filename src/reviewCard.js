@@ -21,7 +21,7 @@ export function createReviewCard(card){
         id: id,
         title: clone.querySelector("[data-title]"),
         rating: clone.querySelector("[data-rating]"),
-        review: clone.querySelector("[data-review] p"),
+        review: clone.querySelector("[data-review]"),
         playtime: clone.querySelector("[data-playtime] p"),
         deleteButton: clone.querySelector(".delete-review-btn"),
         editButton: clone.querySelector(".edit-review-btn")

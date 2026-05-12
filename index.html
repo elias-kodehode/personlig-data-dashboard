@@ -22,9 +22,12 @@
         </select>
       </label>
       <p id="total-playtime">Total Playtime:</p>
-      <button id="create-review-btn">Create Review</button>
 
-      <button id="delete-all-btn">Delete All</button>
+      <span class="pill">
+        <button id="create-review-btn">Create Review</button>
+
+        <button id="delete-all-btn">Delete All</button>
+      </span>
     </header>
     <main>
       <div class="grid"></div>
@@ -42,16 +45,14 @@
       </div>
 
       <div class="review-card-body">
-        <div data-review class="game-review">
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Consequuntur nihil eaque aliquam facere architecto aut adipisci
-            beatae id maxime. Et?
-          </p>
-        </div>
+        <p data-review class="game-review">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur
+          nihil eaque aliquam facere architecto aut adipisci beatae id maxime.
+          Et?
+        </p>
       </div>
 
-      <div class="review-card-buttons">
+      <div class="review-card-buttons pill">
         <button class="edit-review-btn">Edit</button>
         <button class="delete-review-btn">Delete</button>
       </div>
@@ -65,34 +66,34 @@
       <div class="modal-field">
         <label
           >Game Title:
-          <input data-game-title />
+          <input data-game-title required />
         </label>
       </div>
 
       <div class="modal-field">
         <label
           >Playtime(hrs):
-          <input data-game-playtime type="number" min="1" />
+          <input data-game-playtime type="number" min="1" required />
         </label>
       </div>
 
       <div class="modal-field">
         <label
           >Rating out of 10
-          <input data-game-rating type="number" min="0" max="10" />
+          <input data-game-rating type="number" min="0" max="10" required />
         </label>
       </div>
 
       <div class="modal-field">
         <label
           >Game Review:
-          <textarea data-game-review></textarea>
+          <textarea data-game-review required></textarea>
         </label>
       </div>
 
-      <menu>
-        <button type="button" data-close-button>Close</button>
+      <menu class="pill">
         <button type="submit">Save</button>
+        <button type="button" data-close-button>Close</button>
       </menu>
     </form>
   </dialog>

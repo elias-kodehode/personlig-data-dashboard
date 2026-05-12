@@ -1,11 +1,10 @@
 :root{
-    --bg-color: hsl(0, 0%, 20%);
-    --card-color: hsl(from var(--bg-color) h calc(s + 0) calc(l - 10));
-
+    --bg-color: hsl(0, 0%, 5%);
+    --card-color: hsl(from var(--bg-color) h calc(s + 0) calc(l + 10));
+    --card-color2: hsl(from var(--bg-color) h calc(s + 0) calc(l + 20));
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     color: white;
 }
-
 *,
 *::before,
 *::after{
@@ -14,86 +13,177 @@
     box-sizing: border-box;
 }
 
-header > * {
-    align-self: center;
-}
-body{
-    background-color: var(--bg-color);
-    display: flex;
-    flex-direction: column;
-}
-
-
 header{
     display: flex;
-    flex-grow: 1;
-    gap: 8px;
-    margin: 5px;
-}
-
-header button{
-    border: none;
-    border-radius: 20px;
-    width: auto;
+    justify-content: space-around;
+    align-items: baseline;
+    background-color: var(--card-color);
     padding: 5px;
-    
+    gap: 8px;
 }
 
-
-header label{
-    flex:1;
+header > :not(span){
+    flex: 1;
 }
 
-.grid{
-    display: grid;
-    flex:1;
-    grid-template-columns: repeat(4, 1fr);
-    margin: 20px;
-    gap: 16px;
+header span{
+    gap: 0;
+    display: flex;
 }
+
 
 .review-card{
     display: flex;
-    flex-direction: column;
-    padding: 10px;
-    background-color: var(--card-color);
     gap: 8px;
-    border-radius: 10px;
-    corner-shape: squircle;
-    box-shadow: 
-    -1px -1px 1px  white,
-    1px 1px 1px white,
-    5px 5px 5px black;
-    color: white;
+    box-shadow: 5px 5px 5px black;
+}
+.review-card-buttons{
+    display: flex;
+    justify-self: flex-end;
 }
 
 .review-card-header{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: baseline;
 }
 
-.review-card-header h3{
+.review-card-body{
+    flex:1;
+    background-color: var(--card-color2);
+    box-shadow:
+        inset 1px 1px 5px black,
+        inset -1px -1px 5px black;
+    padding: 5px;
+}
+
+.review-card-body p{
+    height: 4lh;
+    font-size: .9rem;
     text-wrap: balance;
-    text-overflow: ellipsis;
-
-}
-.review-card-buttons{
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
 }
 
 .review-card-buttons button{
-    flex-grow: 1;
-    border: none;
-    border-radius: 20px;
-    width: auto;
+    flex:1;
+}
+
+
+
+menu button[type="submit"]{
+    /* width: 100%; */
+    flex: 1;
+}
+button{
+    height: 30px;
     padding: 5px;
-    /* width: clamp(4ch,6ch, 8ch); */
+}
+.pill button{
+    background-color: var(--card-color2);
+    border: 1px solid black;
+    color: white;
+    
+}
+
+.pill button:hover{
+    /* border-style: inset; */
+    box-shadow:
+    inset 1px 1px 5px black,
+    inset -1px -1px 5px black;
+}
+
+.pill{
+    display: flex;
+    flex-direction: row;
+}
+
+.pill :first-child{
+    border-radius: 20px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.pill :last-child{
+    border-radius: 20px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+body{
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.grid{
+    margin: 1rem;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+.review-card{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card-color);
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.modal{
+    position: relative;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    width: fit-content;
+    height: fit-content;
+    /* padding: 5px; */
+    gap: 5px;
+    background-color: var(--card-color2);
+    color: white;
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.modal form{
+    display: flex;
+    flex-direction: column;
+}
+
+.modal form h2{
+    text-align: center;
 
 }
 
-button{
+.modal textarea, .modal input{
+    background: #000;
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 5px;
+    color: white;
+}
+
+.modal-field label input{
+    width: 100%;
+    
+}
+
+.modal textarea{
+    border-radius: 0;
+    height: 8lh;
+    width: 80ch;
+    text-wrap: balance;
+    background-color: var(--card-color);
+    resize: none;
+    color: white;
+}
+
+.modal::backdrop{
+    background-color: rgba(0, 0, 0, .8);
+}
+
+/* button{
     background-color: transparent;
     box-shadow: 
         -1px -1px 1px  white,
@@ -102,149 +192,16 @@ button{
         color: white;
         corner-shape: squircle;
         transition: .1s all linear;
-}
+        border-radius: 20px;
+        padding: 10px 20px;
+} */
 
-button:hover{
+/* button:hover{
     scale: .95;
     background-color: var(--bg-color);
     box-shadow: 
         inset -1px -1px 1px  white,
         inset 1px 1px 1px white,
         inset 5px 5px 5px  black;
-
-
         corner-shape: squircle scoop squircle squircle;
-}
-
-
-button:active{
-    scale: 0.9;
-}
-
-.game-rating {
-    color:beige;
-    font-size: .9rem;
-}
-
-.review-card-body{
-    display: flex;
-    flex-direction: column;
-    flex:1;
-    
-}
-
-.game-review {
-    flex:1;
-    /* border: 1px solid black; */
-    padding: 5px;
-    background-color: hsl(from var(--bg-color) h calc(s + 0) calc(l - 1));
-    border-radius: 10px;
-    corner-shape: squircle;
-    text-wrap: balance;
-    box-shadow: 
-        inset -1px -1px 1px  white,
-        inset 1px 1px 1px white;
-
-    color: white;
-
-    max-height: 10lh;
-    overflow-y: scroll;
-    overflow-y: auto;
-}
-
-
-
-.modal{
-    position: relative;
-    background-color: var(--card-color);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 20px;
-    left: 50%;
-    top:50%;
-    translate: -50% -50%;
-    color: white;
-    min-width: 300px;
-    
-    border-radius: 20px;
-    /* corner-top-right-shape: scoop; */
-
-    box-shadow: 
-    -1px -1px 1px  white,
-     1px 1px 1px white,
-     5px 5px 5px black;
-     z-index: 9;
-     overflow: hidden;
-}
-
-.modal::backdrop{
-    background-color: rgba(0, 0, 0, .8);
-}
-
-.modal .container h2{
-    text-align: center;
-}
-
-.modal button{
-    border-radius: 20px;
-    width: fit-content;
-    padding: 10px 20px;
-    align-self: flex-end;
-    border: none;
-}
-
-
-.modal .container{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 8px;
-    
-}
-
-
-.modal-field{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.modal-field input, .modal-field textarea{
-    padding: 10px;
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid black;
-    background-color: var(--card-color);
-    color: white;
-}
-
-.modal-field input:focus, .modal-field textarea:focus{
-    outline: 2px solid black;
-}
-.modal .container textarea{
-    min-height: 15lh;
-}
-
-.delete-review-btn:hover, #saveBtn:hover{
-    corner-shape: scoop squircle squircle squircle;
-}
-
-#delete-all-btn, #openBtn{
-    corner-shape: squircle;
-}
-
-
-
-@media (max-width: 767px)  { 
-    .grid{
-        display: grid;
-        flex:1;
-        grid-template-columns: repeat(1, 1fr);
-        margin: 20px;
-        gap: 16px;
-    }
-
-    .review-card{
-        height: 100%;
-    }
-}
+} */
